@@ -20,6 +20,12 @@ apply plugin: 'scala'
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'maven-publish'
 
+//tasks.withType(ScalaCompile) {
+//    scalaCompileOptions.forkOptions.with {
+//        jvmArgs = ['-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5007']
+//    }
+//}
+
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
@@ -69,6 +75,8 @@ minecraft {
 repositories {
     maven { url "https://maven.cil.li/" }
     maven { url "https://minecraft.curseforge.com/api/maven/" }
+    maven { url "https://maven.tterrag.com" }  // EnderIO
+    maven { url "https://maven2.tterrag.com" }  // EnderIO
 }
 
 configurations {
@@ -122,6 +130,21 @@ dependencies {
         exclude module: "CodeChickenLib"
         exclude module: "jei_1.12"
         exclude module: "ForgeMultipart"
+    }
+
+    deobfCompile "com.enderio.core:EnderCore:1.12.2-0.5.74"
+    deobfCompile("com.enderio:EnderIO:1.12.2-5.1.55") {
+        transitive = false
+        exclude module: "appliedenergistics2"
+        exclude module: "buildcraft"
+        exclude module: "Waila"
+        exclude module: "forestry_1.10.2"
+        exclude module: "OpenComputers"
+        exclude module: "CodeChickenLib"
+        exclude module: "CodeChickenCore"
+        exclude module: "EquivalentExchange3"
+        exclude module: "jei_1.10.2"
+        exclude module: "Tesla"
     }
 
     embedded files('libs/OpenComputers-JNLua.jar', 'libs/OpenComputers-LuaJ.jar')

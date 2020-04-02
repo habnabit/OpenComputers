@@ -149,13 +149,13 @@ class Player(val agent: internal.Agent) extends FakePlayer(agent.world.asInstanc
     this.inventoryContainer = new AgentContainer(this)
     this.openContainer = this.inventoryContainer
 
-    try {
-      ObfuscationReflectionHelper.setPrivateValue(classOf[EntityPlayer], this, new PlayerMainInvWrapper(inventory), "playerMainHandler")
-      ObfuscationReflectionHelper.setPrivateValue(classOf[EntityPlayer], this, new CombinedInvWrapper(new PlayerArmorInvWrapper(inventory), new PlayerOffhandInvWrapper(inventory)), "playerEquipmentHandler")
-      ObfuscationReflectionHelper.setPrivateValue(classOf[EntityPlayer], this, new PlayerInvWrapper(inventory), "playerJoinedHandler")
-    } catch {
-      case _: Exception =>
-    }
+//    try {
+//      ObfuscationReflectionHelper.setPrivateValue(classOf[EntityPlayer], this, new PlayerMainInvWrapper(inventory), "playerMainHandler")
+//      ObfuscationReflectionHelper.setPrivateValue(classOf[EntityPlayer], this, new CombinedInvWrapper(new PlayerArmorInvWrapper(inventory), new PlayerOffhandInvWrapper(inventory)), "playerEquipmentHandler")
+//      ObfuscationReflectionHelper.setPrivateValue(classOf[EntityPlayer], this, new PlayerInvWrapper(inventory), "playerJoinedHandler")
+//    } catch {
+//      case _: Exception =>
+//    }
   }
 
   var facing, side = EnumFacing.SOUTH
